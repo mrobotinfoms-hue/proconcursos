@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { Navbar } from '@/components/custom/navbar';
-import { Footer } from '@/components/custom/footer';
+import Link from 'next/link'
+import { Navbar } from '@/components/custom/navbar'
+import { Footer } from '@/components/custom/footer'
 import {
   Upload,
   Brain,
@@ -17,385 +17,222 @@ import {
   Star,
   ArrowRight,
   Sparkles,
-} from 'lucide-react';
+} from 'lucide-react'
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 via-white to-orange-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-4xl mx-auto">
-            <Badge className="mb-6 bg-gradient-to-r from-blue-700 to-blue-900 text-white border-0 px-4 py-2">
-              <Sparkles className="w-4 h-4 mr-2 inline" />
-              Simulados Inteligentes com IA
-            </Badge>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-700 via-blue-800 to-blue-900 bg-clip-text text-transparent leading-tight">
-              Sua aprovação começa aqui
-            </h1>
-            <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+      <section className="pt-32 pb-20 px-4 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
               Estude para concursos públicos com{' '}
-              <span className="font-semibold text-blue-700 dark:text-blue-400">
-                simulados personalizados
+              <span className="relative">
+                simulados personalizados{' '}
+                <span className="absolute bottom-2 left-0 right-0 h-3 bg-purple-200 dark:bg-purple-900 -z-10" />
               </span>{' '}
-              gerados por inteligência artificial. Análise de desempenho, gamificação e muito mais.
+              gerados por inteligência artificial.
+            </h1>
+            <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
+              Análise de desempenho, gamificação e muito mais.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/login">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-800 hover:to-blue-950 text-white text-lg px-8 py-6 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-                >
-                  Começar Agora Grátis
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                href="/#get-started"
+                className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              >
+                Começar Grátis
               </Link>
-              <Link href="#planos">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-lg px-8 py-6 border-2 border-blue-700 text-blue-700 hover:bg-blue-50 dark:border-blue-400 dark:text-blue-400 dark:hover:bg-gray-900"
-                >
-                  Ver Planos
-                </Button>
-              </Link>
+              <button className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-8 py-3 rounded-lg hover:border-blue-600 transition-colors font-medium">
+                Ver Demo
+              </button>
             </div>
-            <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-gray-600 dark:text-gray-400 mt-6">
               ✨ Teste grátis: 1 edital + 1 simulado com até 3 matérias
             </p>
           </div>
+          <div className="hidden md:block bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900 dark:to-purple-900 rounded-3xl h-96 flex items-center justify-center">
+            <Sparkles size={100} className="text-gray-400" />
+          </div>
+        </div>
+      </section>
 
-          {/* Stats */}
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+      {/* Features Section */}
+      <section id="features" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-4">
+            4 passos simples para turbinar seus estudos e conquistar sua aprovação
+          </h2>
+          <p className="text-center text-gray-600 dark:text-gray-400 mb-16">
+            Processo intuitivo e eficiente
+          </p>
+
+          <div className="grid md:grid-cols-4 gap-8">
             {[
-              { value: '10.000+', label: 'Questões' },
-              { value: '500+', label: 'Concursos' },
-              { value: '95%', label: 'Satisfação' },
-              { value: '24/7', label: 'Disponível' },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold text-blue-700 dark:text-blue-400 mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-gray-600 dark:text-gray-400">{stat.label}</div>
+              { icon: Upload, title: 'Upload Edital', description: 'Envie seu edital PDF' },
+              { icon: Brain, title: 'IA Analisa', description: 'Processamento automático' },
+              { icon: BarChart3, title: 'Simulado Gerado', description: 'Prova personalizada' },
+              { icon: Trophy, title: 'Aprove!', description: 'Estude e conquiste' },
+            ].map((feature, idx) => (
+              <div key={idx} className="bg-white dark:bg-gray-900 p-8 rounded-xl border border-gray-200 dark:border-gray-700 text-center hover:shadow-lg transition-shadow">
+                <feature.icon size={40} className="mx-auto mb-4 text-blue-600" />
+                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Funcionalidades */}
-      <section id="funcionalidades" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-950">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-              Como Funciona
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              4 passos simples para turbinar seus estudos e conquistar sua aprovação
-            </p>
-          </div>
+      {/* Benefits Section */}
+      <section className="py-20 px-4 max-w-7xl mx-auto">
+        <h2 className="text-4xl font-bold text-center mb-4">
+          Recursos exclusivos que vão acelerar sua aprovação
+        </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Upload,
-                title: 'Upload do Edital',
-                description:
-                  'Envie o link ou PDF do edital. Nossa IA identifica automaticamente todas as matérias e conteúdos.',
-                color: 'from-blue-500 to-blue-700',
-              },
-              {
-                icon: Brain,
-                title: 'Simulados Inteligentes',
-                description:
-                  'Escolha dificuldade, quantidade de questões e tempo. A IA gera simulados personalizados.',
-                color: 'from-orange-500 to-orange-700',
-              },
-              {
-                icon: BarChart3,
-                title: 'Análise Completa',
-                description:
-                  'Veja seu desempenho, explicações detalhadas e vídeos recomendados para cada questão.',
-                color: 'from-green-500 to-green-700',
-              },
-              {
-                icon: Trophy,
-                title: 'Gamificação',
-                description:
-                  'Ganhe pontos, badges e suba no ranking. Estude de forma divertida e motivadora.',
-                color: 'from-purple-500 to-purple-700',
-              },
-            ].map((feature, index) => (
-              <Card
-                key={index}
-                className="p-6 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900"
-              >
-                <div
-                  className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-4 shadow-lg`}
-                >
-                  <feature.icon className="w-7 h-7 text-white" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {feature.description}
-                </p>
-              </Card>
-            ))}
-          </div>
+        <div className="grid md:grid-cols-3 gap-8 mt-16">
+          {[
+            { icon: Clock, title: 'Cronômetro', desc: 'Pratique dentro do tempo real' },
+            { icon: BarChart3, title: 'Análise', desc: 'Veja seu progresso detalhado' },
+            { icon: Download, title: 'Download', desc: 'Baixe seus simulados' },
+            { icon: Printer, title: 'Impressão', desc: 'Imprima para estudar offline' },
+            { icon: Target, title: 'Foco', desc: 'Estude por disciplina' },
+            { icon: Zap, title: 'Rápido', desc: 'Geração em segundos' },
+          ].map((benefit, idx) => (
+            <div key={idx} className="flex gap-4">
+              <benefit.icon size={32} className="text-blue-600 flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="font-bold text-lg mb-1">{benefit.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400">{benefit.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Benefícios */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-orange-50 dark:from-gray-900 dark:to-gray-950">
+      {/* Pricing Section */}
+      <section id="get-started" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-              Por Que Escolher o PRO CONCURSOS?
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Recursos exclusivos que vão acelerar sua aprovação
-            </p>
-          </div>
+          <h2 className="text-4xl font-bold text-center mb-4">
+            Comece grátis e desbloqueie todo o potencial quando estiver pronto
+          </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-8 mt-16">
             {[
               {
-                icon: Zap,
-                title: 'IA de Última Geração',
-                description: 'Questões geradas com inteligência artificial avançada',
+                name: 'Gratuito',
+                price: 'R$ 0',
+                desc: 'Para testar a plataforma',
+                features: ['1 simulado grátis', 'Até 3 matérias', 'Sem cartão de crédito'],
               },
               {
-                icon: Target,
-                title: 'Foco no Seu Edital',
-                description: 'Simulados 100% personalizados para o seu concurso',
-              },
-              {
-                icon: Clock,
-                title: 'Estude no Seu Ritmo',
-                description: 'Defina tempo e quantidade de questões',
-              },
-              {
-                icon: Download,
-                title: 'Baixe e Imprima',
-                description: 'Estude offline quando e onde quiser',
-              },
-              {
-                icon: CheckCircle2,
-                title: 'Explicações Detalhadas',
-                description: 'Entenda cada questão com explicações completas',
-              },
-              {
-                icon: Star,
-                title: 'Modo Escuro',
-                description: 'Estude confortavelmente em qualquer horário',
-              },
-            ].map((benefit, index) => (
-              <Card
-                key={index}
-                className="p-6 bg-white dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300"
-              >
-                <benefit.icon className="w-10 h-10 text-blue-700 dark:text-blue-400 mb-4" />
-                <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Planos */}
-      <section id="planos" className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-950">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-              Escolha Seu Plano
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Comece grátis e desbloqueie todo o potencial quando estiver pronto
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Plano Gratuito */}
-            <Card className="p-8 border-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Gratuito</h3>
-                <div className="text-4xl font-bold text-gray-900 dark:text-white mb-2">R$ 0</div>
-                <p className="text-gray-600 dark:text-gray-400">Para testar a plataforma</p>
-              </div>
-              <ul className="space-y-3 mb-8">
-                {['1 edital', '1 simulado', 'Até 3 matérias', 'Análise básica'].map((feature) => (
-                  <li key={feature} className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700 dark:text-gray-300">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link href="/login">
-                <Button variant="outline" className="w-full border-2 border-gray-300 dark:border-gray-700">
-                  Começar Grátis
-                </Button>
-              </Link>
-            </Card>
-
-            {/* Plano Mensal */}
-            <Card className="p-8 border-4 border-blue-700 dark:border-blue-500 bg-white dark:bg-gray-900 relative transform scale-105 shadow-2xl">
-              <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-orange-500 to-orange-700 text-white border-0 px-4 py-1">
-                MAIS POPULAR
-              </Badge>
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Mensal</h3>
-                <div className="text-5xl font-bold text-blue-700 dark:text-blue-400 mb-2">
-                  R$ 29,90
-                </div>
-                <p className="text-gray-600 dark:text-gray-400">por mês</p>
-              </div>
-              <ul className="space-y-3 mb-8">
-                {[
-                  'Editais ilimitados',
+                name: 'PRO',
+                price: 'R$ 24,90',
+                period: '/mês',
+                desc: 'Plano completo',
+                features: [
                   'Simulados ilimitados',
                   'Todas as matérias',
-                  'Análise completa com IA',
-                  'Explicações detalhadas',
-                  'Vídeos recomendados',
-                  'Gamificação completa',
-                  'Download e impressão',
-                  'Modo escuro',
+                  'Analytics completo',
                   'Suporte prioritário',
-                ].map((feature) => (
-                  <li key={feature} className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 text-blue-700 dark:text-blue-400 mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700 dark:text-gray-300">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link href="/planos">
-                <Button className="w-full bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-800 hover:to-blue-950 text-white shadow-xl">
-                  Assinar Agora
-                </Button>
-              </Link>
-            </Card>
-
-            {/* Plano Anual */}
-            <Card className="p-8 border-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 relative">
-              <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-green-500 to-green-700 text-white border-0 px-4 py-1">
-                ECONOMIZE R$ 72
-              </Badge>
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">Anual</h3>
-                <div className="text-5xl font-bold text-green-700 dark:text-green-400 mb-2">
-                  R$ 298,80
+                ],
+              },
+            ].map((plan, idx) => (
+              <div
+                key={idx}
+                className={`p-8 rounded-xl border-2 ${
+                  idx === 1
+                    ? 'border-blue-600 bg-blue-50 dark:bg-blue-900/20'
+                    : 'border-gray-200 dark:border-gray-700'
+                }`}
+              >
+                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">{plan.desc}</p>
+                <div className="mb-6">
+                  <span className="text-4xl font-bold">{plan.price}</span>
+                  {plan.period && <span className="text-gray-600 dark:text-gray-400">{plan.period}</span>}
                 </div>
-                <p className="text-gray-600 dark:text-gray-400">R$ 24,90/mês</p>
-              </div>
-              <ul className="space-y-3 mb-8">
-                {[
-                  'Tudo do plano Mensal',
-                  'Economia de R$ 72/ano',
-                  'Acesso antecipado',
-                  'Suporte VIP',
-                ].map((feature) => (
-                  <li key={feature} className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700 dark:text-gray-300">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link href="/planos">
-                <Button
-                  variant="outline"
-                  className="w-full border-2 border-green-700 text-green-700 hover:bg-green-50 dark:border-green-500 dark:text-green-400 dark:hover:bg-gray-900"
+                <button
+                  className={`w-full py-3 rounded-lg font-medium mb-6 ${
+                    idx === 1
+                      ? 'bg-blue-600 text-white hover:bg-blue-700'
+                      : 'border-2 border-gray-300 dark:border-gray-600 hover:border-blue-600'
+                  } transition-colors`}
                 >
-                  Assinar Anual
-                </Button>
-              </Link>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Depoimentos */}
-      <section id="depoimentos" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-orange-50 dark:from-gray-900 dark:to-gray-950">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-              O Que Dizem Nossos Alunos
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Histórias reais de aprovação com o PRO CONCURSOS
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                name: 'Maria Silva',
-                role: 'Aprovada TRT-SP',
-                text: 'Os simulados personalizados foram essenciais para minha aprovação. A análise de desempenho me mostrou exatamente onde precisava melhorar.',
-                rating: 5,
-              },
-              {
-                name: 'João Santos',
-                role: 'Aprovado Polícia Federal',
-                text: 'A gamificação tornou os estudos muito mais motivadores. Consegui manter a consistência e fui aprovado em 6 meses!',
-                rating: 5,
-              },
-              {
-                name: 'Ana Costa',
-                role: 'Aprovada TCU',
-                text: 'A qualidade das questões e explicações é excepcional. Melhor investimento que fiz para meus estudos.',
-                rating: 5,
-              },
-            ].map((testimonial, index) => (
-              <Card key={index} className="p-6 bg-white dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800">
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-500 fill-yellow-500" />
+                  {idx === 0 ? 'Começar Grátis' : 'Assinar Agora'}
+                </button>
+                <ul className="space-y-3">
+                  {plan.features?.map((feature, fidx) => (
+                    <li key={fidx} className="flex items-center gap-2">
+                      <CheckCircle2 size={20} className="text-green-600" />
+                      <span>{feature}</span>
+                    </li>
                   ))}
-                </div>
-                <p className="text-gray-700 dark:text-gray-300 mb-4 italic">"{testimonial.text}"</p>
-                <div>
-                  <div className="font-bold text-gray-900 dark:text-white">{testimonial.name}</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">{testimonial.role}</div>
-                </div>
-              </Card>
+                </ul>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Final */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-700 via-blue-800 to-blue-900 dark:from-blue-900 dark:via-blue-950 dark:to-black">
+      {/* Testimonials */}
+      <section id="testimonials" className="py-20 px-4 max-w-7xl mx-auto">
+        <h2 className="text-4xl font-bold text-center mb-4">
+          Histórias reais de aprovação com o PRO CONCURSOS
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-8 mt-16">
+          {[
+            {
+              name: 'Maria Silva',
+              role: 'Aprovada em Concurso Federal',
+              text: '"Aprovei em apenas 3 meses usando o PRO CONCURSOS. Os simulados são incríveis!"',
+            },
+            {
+              name: 'João Santos',
+              role: 'Policial Federal',
+              text: '"A plataforma me ajudou a organizar meus estudos e focar nas disciplinas mais difíceis."',
+            },
+            {
+              name: 'Ana Costa',
+              role: 'Servidora Pública',
+              text: '"Melhor investimento para estudar. Recomendo para todos que querem passar em concurso."',
+            },
+          ].map((testimonial, idx) => (
+            <div key={idx} className="bg-white dark:bg-gray-800 p-8 rounded-xl border border-gray-200 dark:border-gray-700">
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={16} className="fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">"{testimonial.text}"</p>
+              <p className="font-bold">{testimonial.name}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">{testimonial.role}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">
-            Pronto para sua aprovação?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <h2 className="text-4xl font-bold mb-6">
             Junte-se a milhares de aprovados que transformaram seus estudos com o PRO CONCURSOS
-          </p>
-          <Link href="/login">
-            <Button
-              size="lg"
-              className="bg-white text-blue-700 hover:bg-gray-100 text-lg px-8 py-6 shadow-2xl transform hover:scale-105 transition-all duration-300"
-            >
-              Começar Agora Grátis
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
+          </h2>
+          <Link
+            href="/#get-started"
+            className="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors font-bold"
+          >
+            Começar Gratuitamente
           </Link>
-          <p className="mt-6 text-blue-200 text-sm">
-            ✨ Sem cartão de crédito • Teste completo grátis • Cancele quando quiser
-          </p>
+          <p className="text-blue-100 mt-6">✨ Sem cartão de crédito • Teste completo grátis • Cancele quando quiser</p>
         </div>
       </section>
 
       <Footer />
     </div>
-  );
+  )
 }
